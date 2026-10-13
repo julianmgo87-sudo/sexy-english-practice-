@@ -12,12 +12,12 @@ const RULES: TipRule[] = [
   {
     id: "th-voiced",
     test: (w) => /^(the|this|that|these|those|there|their|they|them|then|than|though|with|together|other|mother|brother|father|weather|another|without|breathe)$/.test(w),
-    tip: "La «th» de esta palabra vibra: pon la punta de la lengua entre los dientes y deja que suene suave, como una «d» muy blandita.",
+    tip: "La «th» de esta palabra vibra (en la pronunciación la escribimos «d»): punta de la lengua entre los dientes, haciendo vibrar la voz.",
   },
   {
     id: "th",
     test: (w) => w.includes("th"),
-    tip: "Para la «th» saca un poquito la punta de la lengua entre los dientes y sopla suave. No es «t» ni «s».",
+    tip: "Para la «th» (en la pronunciación la escribimos «z») pon la punta de la lengua entre los dientes y sopla suave. No es «t» ni «s».",
   },
   {
     id: "s-cluster",
@@ -47,7 +47,7 @@ const RULES: TipRule[] = [
   {
     id: "w",
     test: (w) => w.startsWith("w") || w.startsWith("wh"),
-    tip: "La «w» se hace con los labios redondos, como si empezaras una «u» rápida: «uát», «uélcom».",
+    tip: "La «w» se hace con los labios en forma de beso, como una «u» rápida: «uánt», «uélcam».",
   },
   {
     id: "y",

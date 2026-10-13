@@ -71,3 +71,19 @@ test("si alguna palabra no salió bien, la nota no llega a «¡Perfecta!»", () 
   assert.ok(r.score <= 89, `score ${r.score}`);
   assert.equal(scorePronunciation("You look really sexy tonight.", { transcript: "you look really sexy tonite" }).score, 100);
 });
+
+test("[name] acepta cualquier nombre y no resta si se omite", () => {
+  const phrase = "Hey [name], welcome to my room!";
+  assert.equal(scorePronunciation(phrase, { transcript: "hey Mike welcome to my room" }).score, 100);
+  assert.equal(scorePronunciation(phrase, { transcript: "hey welcome to my room" }).score, 100);
+  const r = scorePronunciation(phrase, { transcript: "hey Carlos come to my room" });
+  assert.equal(r.words[1].status, "good");
+  assert.notEqual(r.words[2].status, "good");
+});
+
+test("los besos y números con guion no restan", () => {
+  assert.equal(scorePronunciation("Tip for a kiss. Mwah!", { transcript: "tip for a kiss" }).score, 100);
+  assert.equal(scorePronunciation("Tip 25 and I'll turn around slowly.", { transcript: "tip twenty-five and I'll turn around slowly" }).score, 100);
+  assert.equal(scorePronunciation("I'm online Monday to Friday at 9 pm Eastern.", { transcript: "I'm online Monday to Friday at 9pm Eastern" }).score, 100);
+  assert.equal(scorePronunciation("I'm online Monday to Friday at 9 pm Eastern.", { transcript: "I'm online Monday to Friday at 9 p.m. Eastern" }).score, 100);
+});

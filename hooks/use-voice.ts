@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { spokenText } from "@/lib/phrases";
 
 export interface VoiceState {
   status: "idle" | "loading" | "playing";
@@ -105,7 +106,7 @@ export function useVoice({ live, version }: UseVoiceOptions) {
     (phrase: { id: string; en: string }, slow = false) => {
       stop();
       if (!live || liveFailedRef.current) {
-        speakWithBrowser(phrase.en, slow);
+        speakWithBrowser(spokenText(phrase.en), slow);
         return;
       }
 
@@ -130,7 +131,7 @@ export function useVoice({ live, version }: UseVoiceOptions) {
         // La voz premium falló (sin clave, sin saldo, sin red...): seguimos con la del dispositivo.
         liveFailedRef.current = true;
         audioRef.current = null;
-        speakWithBrowser(phrase.en, slow);
+        speakWithBrowser(spokenText(phrase.en), slow);
       };
       audio.play().catch((err: unknown) => {
         if (audioRef.current !== audio) return;

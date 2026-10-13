@@ -1,5 +1,6 @@
 "use client";
 
+import { Fragment } from "react";
 import Link from "next/link";
 import { ChevronDown, ChevronRight, Check, Sparkles } from "lucide-react";
 import { LESSONS, PHRASES } from "@/lib/phrases";
@@ -64,63 +65,76 @@ function Lessons({ profile }: { profile: string }) {
       </section>
 
       <section className="mt-8 space-y-4">
-        <h2 className="px-1 font-display text-xl text-mute">Lecciones del libro</h2>
-        {LESSONS.map((lesson) => {
+        {LESSONS.map((lesson, lessonIndex) => {
           const done = lesson.phrases.filter((p) => isMastered(progress[p.id])).length;
           const containsNext = lesson.phrases.some((p) => p.id === next.id);
+          const newPart = lessonIndex === 0 || LESSONS[lessonIndex - 1].part !== lesson.part;
           return (
-            <details key={lesson.id} open={containsNext} className="group rounded-3xl border border-line bg-plum/60">
-              <summary className="flex cursor-pointer list-none items-center gap-3 p-4 sm:p-5 [&::-webkit-details-marker]:hidden">
-                <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-plum-3 text-xl" aria-hidden>
-                  {lesson.emoji}
-                </span>
-                <span className="min-w-0 flex-1">
-                  <span className="block font-semibold">{lesson.title}</span>
-                  <span className="block truncate text-sm text-mute">{lesson.subtitle}</span>
-                </span>
-                <span className="shrink-0 text-sm tabular-nums text-mute">
-                  {done}/{lesson.phrases.length}
-                </span>
-                <ChevronDown className="size-4 shrink-0 text-faint transition group-open:rotate-180" />
-              </summary>
-              <ul className="space-y-1 px-2 pb-3 sm:px-3">
-                {lesson.phrases.map((phrase, i) => {
-                  const p = progress[phrase.id];
-                  return (
-                    <li key={phrase.id}>
-                      <Link
-                        href={`/frase/${phrase.id}`}
-                        className="flex items-center gap-3 rounded-2xl px-2 py-2.5 transition hover:bg-plum-2 sm:px-3"
-                      >
-                        <span
-                          className={`flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${
-                            isMastered(p) ? "bg-good/15 text-good" : "bg-plum-3 text-mute"
-                          }`}
+            <Fragment key={lesson.id}>
+              {newPart && <h2 className={`px-1 font-display text-xl text-gold ${lessonIndex > 0 ? "pt-4" : ""}`}>{lesson.part}</h2>}
+              <details open={containsNext} className="group rounded-3xl border border-line bg-plum/60">
+                <summary className="flex cursor-pointer list-none items-center gap-3 p-4 sm:p-5 [&::-webkit-details-marker]:hidden">
+                  <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-plum-3 text-xl" aria-hidden>
+                    {lesson.emoji}
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-semibold">{lesson.title}</span>
+                    <span className="block truncate text-sm text-mute">{lesson.subtitle}</span>
+                  </span>
+                  <span className="shrink-0 text-sm tabular-nums text-mute">
+                    {done}/{lesson.phrases.length}
+                  </span>
+                  <ChevronDown className="size-4 shrink-0 text-faint transition group-open:rotate-180" />
+                </summary>
+                {lesson.tip && (
+                  <p className="mx-4 mb-2 rounded-2xl bg-night/60 px-4 py-3 text-sm text-mute sm:mx-5">
+                    <span className="font-semibold text-gold">Consejo del libro: </span>
+                    {lesson.tip}
+                  </p>
+                )}
+                <ul className="space-y-1 px-2 pb-3 sm:px-3">
+                  {lesson.phrases.map((phrase, i) => {
+                    const p = progress[phrase.id];
+                    return (
+                      <li key={phrase.id}>
+                        <Link
+                          href={`/frase/${phrase.id}`}
+                          className="flex items-center gap-3 rounded-2xl px-2 py-2.5 transition hover:bg-plum-2 sm:px-3"
                         >
-                          {isMastered(p) ? <Check className="size-3.5" strokeWidth={3} /> : i + 1}
-                        </span>
-                        <span className="min-w-0 flex-1">
-                          <span className="line-clamp-2 font-medium">{phrase.en}</span>
-                          <span className="line-clamp-2 text-sm text-mute">{phrase.es}</span>
-                        </span>
-                        {p ? (
-                          <span className="flex shrink-0 flex-col items-end gap-1">
-                            <ScorePill score={p.best} />
-                            <Stars score={p.best} size={11} />
+                          <span
+                            className={`flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold ${
+                              isMastered(p) ? "bg-good/15 text-good" : "bg-plum-3 text-mute"
+                            }`}
+                          >
+                            {isMastered(p) ? <Check className="size-3.5" strokeWidth={3} /> : i + 1}
                           </span>
-                        ) : (
-                          <span className="shrink-0 rounded-full border border-line px-2 py-0.5 text-xs text-faint">nueva</span>
-                        )}
-                        <ChevronRight className="size-4 shrink-0 text-faint" />
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </details>
+                          <span className="min-w-0 flex-1">
+                            <span className="line-clamp-2 font-medium">{phrase.en}</span>
+                            <span className="line-clamp-2 text-sm text-mute">{phrase.es}</span>
+                          </span>
+                          {p ? (
+                            <span className="flex shrink-0 flex-col items-end gap-1">
+                              <ScorePill score={p.best} />
+                              <Stars score={p.best} size={11} />
+                            </span>
+                          ) : (
+                            <span className="shrink-0 rounded-full border border-line px-2 py-0.5 text-xs text-faint">nueva</span>
+                          )}
+                          <ChevronRight className="size-4 shrink-0 text-faint" />
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </details>
+            </Fragment>
           );
         })}
       </section>
+
+      <footer className="mt-12 text-center text-xs text-faint">
+        Sexy English · Clases personalizadas <span className="text-mute">@solucionesbilingues</span>
+      </footer>
     </main>
   );
 }

@@ -19,8 +19,8 @@ export function ProfileGate({ children }: { children: (profile: string) => React
     <main className="mx-auto flex min-h-dvh max-w-md flex-col justify-center px-5 py-12">
       <div className="animate-rise space-y-8">
         <div className="space-y-3 text-center">
-          <Brand className="text-5xl" />
-          <p className="text-mute">Practica las frases del libro y perfecciona tu pronunciación.</p>
+          <Brand stacked className="text-6xl" />
+          <p className="text-mute">Practica las frases del libro, escucha cómo se dicen y mira cómo sube tu calificación.</p>
         </div>
 
         <form
@@ -51,6 +51,10 @@ export function ProfileGate({ children }: { children: (profile: string) => React
           </button>
           <p className="text-center text-xs text-faint">Tu progreso se guarda en este dispositivo.</p>
         </form>
+
+        <p className="rounded-2xl bg-plum-3/60 px-4 py-3 text-center text-xs text-mute">
+          <b className="text-gold">+18</b> · Exclusivo para modelos mayores de edad. Respeta siempre las reglas de tu plataforma y tus propios límites.
+        </p>
 
         {known.length > 0 && (
           <div className="space-y-2 text-center">

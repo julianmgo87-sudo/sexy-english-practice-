@@ -14,7 +14,7 @@ no comparte código ni datos con ninguna otra aplicación.
 ## Publicarla y obtener el link (Vercel, gratis)
 
 1. Entra a [vercel.com/new](https://vercel.com/new) con tu cuenta de GitHub.
-2. Importa el repositorio `sexy-english-practice`.
+2. Importa el repositorio `sexy-english-practice-`.
 3. (Opcional, recomendado) En **Environment Variables** agrega `OPENAI_API_KEY` con tu clave de OpenAI.
 4. Haz clic en **Deploy**. En un par de minutos tendrás un link como
    `https://sexy-english-practice.vercel.app` para compartir con las modelos.
@@ -40,16 +40,24 @@ Variables opcionales (ver `.env.example`):
 
 El estilo de la voz (sexy, cálida, pausada y muy clara) está en `VOICE_INSTRUCTIONS`, en `lib/config.ts`.
 
-## Cambiar o agregar las frases del libro
+## Las frases del libro
 
-Todas las frases están en **`lib/phrases.ts`**, organizadas por lección. Cada frase tiene:
+La app trae las frases del libro **Sexy English – Inglés + poses que generan más dinero**
+(edición 2026), con la pronunciación "a la española" y la traducción del libro, organizadas
+como el libro: las 15 más rentables primero, las lecciones de la Parte 1, las 8 poses, los
+combos, las frases universales y los ejercicios de pronunciación (drills).
+
+Todas están en **`lib/phrases.ts`**. Cada frase es una línea así:
 
 ```ts
-{ id: "hi-baby-welcome", en: "Hi baby, welcome to my room!", es: "¡Hola bebé, bienvenido a mi sala!", sounds: "jái béibi, uélcom tu mái rum" }
+["Hey [name], welcome to my room!", "jéi [neim], uélcam tu mái rum", "¡Hola [nombre], bienvenido a mi sala!"],
+//  inglés                             pronunciación                   traducción     (+ contexto opcional)
 ```
 
-- `en`: la frase en inglés. `es`: la traducción. `sounds`: cómo suena, escrito a la española.
-- `id`: identificador único. No lo cambies después de publicar, porque el progreso de cada modelo se guarda con él.
+- El progreso se guarda por posición dentro de la lección (`saludos-1`, `saludos-2`...):
+  agrega frases nuevas **al final** de su lección para no mezclar el progreso de las modelos.
+- `[name]` se muestra tal cual; la voz de ejemplo dice un nombre de muestra y al calificar
+  se acepta cualquier nombre (o ninguno).
 
 Al subir el cambio a GitHub, Vercel publica la nueva versión sola.
 

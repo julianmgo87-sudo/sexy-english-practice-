@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 import OpenAI from "openai";
-import { getPhrase } from "@/lib/phrases";
+import { getPhrase, spokenText } from "@/lib/phrases";
 import { isLiveAIConfigured, TTS_MODEL, TTS_VOICE, VOICE_INSTRUCTIONS, TTS_VERSION } from "@/lib/config";
 
 // Audios ya generados en esta instancia del servidor. Además, la respuesta se cachea
@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
       const res = await getClient().audio.speech.create({
         model: TTS_MODEL,
         voice: TTS_VOICE,
-        input: phrase.en,
+        input: spokenText(phrase.en),
         response_format: "mp3",
         ...(TTS_MODEL.startsWith("tts-1") ? {} : { instructions: VOICE_INSTRUCTIONS }),
       });

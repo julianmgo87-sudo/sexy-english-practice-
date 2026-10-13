@@ -55,16 +55,20 @@ function Practice({ phraseId, live, ttsVersion, profile }: PracticeScreenProps &
   return (
     <main className="mx-auto max-w-xl px-4 pb-16 pt-5 sm:px-6">
       <nav className="flex items-center justify-between gap-3 text-sm">
-        <Link href="/" className="flex items-center gap-1.5 rounded-full px-2 py-1 text-mute transition hover:text-ink">
+        <Link href="/" className="flex shrink-0 items-center gap-1.5 rounded-full px-2 py-1 text-mute transition hover:text-ink">
           <ArrowLeft className="size-4" />
           Lecciones
         </Link>
-        <span className="truncate text-mute">
-          {phrase.lessonTitle} · {phrase.number}/{phrase.lessonSize}
+        <span className="flex min-w-0 gap-1 text-mute">
+          <span className="truncate">{phrase.lessonTitle}</span>
+          <span className="shrink-0 tabular-nums">
+            · {phrase.number}/{phrase.lessonSize}
+          </span>
         </span>
       </nav>
 
       <section className="mt-4 animate-rise rounded-3xl border border-line bg-plum/80 p-6 text-center shadow-2xl shadow-black/30">
+        {phrase.context && <p className="mb-3 text-sm font-medium text-gold">{phrase.context}</p>}
         <h1 className="font-display text-3xl leading-tight sm:text-4xl">{phrase.en}</h1>
         <p className="mt-3 text-mute">{phrase.es}</p>
 

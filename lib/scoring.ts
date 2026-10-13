@@ -108,8 +108,12 @@ const CONTRACTIONS: Record<string, string> = {
   colour: "color",
 };
 
-// Muletillas que el reconocedor a veces transcribe y que no deben penalizar.
-const FILLERS = new Set(["uh", "um", "umm", "hmm", "mm", "mmm", "ah", "eh", "er", "erm"]);
+// Muletillas y sonidos (como el beso "Mwah!") que el reconocedor no escribe de forma
+// fiable: no cuentan ni en la frase ni en lo escuchado.
+const FILLERS = new Set(["uh", "um", "umm", "hmm", "mm", "mmm", "ah", "eh", "er", "erm", "mwah", "muah", "mua", "aww", "aw"]);
+
+/** Lugar de "[name]" en la frase: acepta cualquier nombre y no resta si se omite. */
+const NAME_SLOT = "*";
 
 const ONES = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
 const TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
@@ -124,11 +128,18 @@ function numberToWords(n: number): string {
 
 /** Convierte una palabra cruda en uno o más tokens comparables. */
 export function normalizeWord(raw: string): string[] {
+  // "twenty-five" y "twenty five" son lo mismo.
+  const parts = raw.split(/[-–—]/);
+  if (parts.length > 1) return parts.flatMap(normalizeWord);
+
   let w = raw.toLowerCase().replace(/[’‘`]/g, "'");
   w = w.replace(/^[^a-z0-9']+|[^a-z0-9']+$/g, "");
   if (!w) return [];
   if (CONTRACTIONS[w]) return CONTRACTIONS[w].split(" ");
   if (/^\d+$/.test(w)) return numberToWords(Number(w)).split(" ");
+  // "9pm" -> "nine pm"
+  const numberAndUnit = w.match(/^(\d+)([a-z]+)$/);
+  if (numberAndUnit) return [...numberToWords(Number(numberAndUnit[1])).split(" "), numberAndUnit[2]];
   w = w.replace(/[^a-z0-9]/g, "");
   if (!w || FILLERS.has(w)) return [];
   return [w];
@@ -151,7 +162,7 @@ function levenshtein(a: string, b: string): number {
 
 /** Similitud 0–1 entre dos palabras normalizadas. */
 export function wordSimilarity(a: string, b: string): number {
-  if (a === b) return 1;
+  if (a === b || a === NAME_SLOT || b === NAME_SLOT) return 1;
   const longest = Math.max(a.length, b.length);
   if (longest === 0) return 1;
   return Math.max(0, 1 - levenshtein(a, b) / longest);
@@ -173,6 +184,15 @@ const INSERTION_COST = 0.6;
 const GOOD_THRESHOLD = 0.85;
 const CLOSE_THRESHOLD = 0.55;
 
+function substitutionCost(t: TargetToken, h: HeardToken): number {
+  // El nombre cuesta un poquito para que, si lo omiten, no "se coma" la palabra siguiente.
+  return t.text === NAME_SLOT ? 0.01 : 1 - wordSimilarity(t.text, h.text);
+}
+
+function deletionCost(t: TargetToken): number {
+  return t.text === NAME_SLOT ? 0.3 : 1;
+}
+
 /**
  * Alinea las palabras objetivo con las escuchadas (distancia de edición a nivel palabra,
  * con sustituciones de costo parcial) y devuelve, para cada palabra objetivo, el índice
@@ -182,13 +202,13 @@ function align(target: TargetToken[], heard: HeardToken[]): { matches: number[];
   const n = target.length;
   const m = heard.length;
   const cost: number[][] = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
-  for (let i = 1; i <= n; i++) cost[i][0] = i;
+  for (let i = 1; i <= n; i++) cost[i][0] = cost[i - 1][0] + deletionCost(target[i - 1]);
   for (let j = 1; j <= m; j++) cost[0][j] = j * INSERTION_COST;
   for (let i = 1; i <= n; i++) {
     for (let j = 1; j <= m; j++) {
       cost[i][j] = Math.min(
-        cost[i - 1][j - 1] + (1 - wordSimilarity(target[i - 1].text, heard[j - 1].text)),
-        cost[i - 1][j] + 1,
+        cost[i - 1][j - 1] + substitutionCost(target[i - 1], heard[j - 1]),
+        cost[i - 1][j] + deletionCost(target[i - 1]),
         cost[i][j - 1] + INSERTION_COST
       );
     }
@@ -200,11 +220,11 @@ function align(target: TargetToken[], heard: HeardToken[]): { matches: number[];
   let j = m;
   const eq = (x: number, y: number) => Math.abs(x - y) < 1e-9;
   while (i > 0 || j > 0) {
-    if (i > 0 && j > 0 && eq(cost[i][j], cost[i - 1][j - 1] + (1 - wordSimilarity(target[i - 1].text, heard[j - 1].text)))) {
+    if (i > 0 && j > 0 && eq(cost[i][j], cost[i - 1][j - 1] + substitutionCost(target[i - 1], heard[j - 1]))) {
       matches[i - 1] = j - 1;
       i--;
       j--;
-    } else if (i > 0 && eq(cost[i][j], cost[i - 1][j] + 1)) {
+    } else if (i > 0 && eq(cost[i][j], cost[i - 1][j] + deletionCost(target[i - 1]))) {
       i--;
     } else {
       extras.push(j - 1);
@@ -223,7 +243,7 @@ function clarityFactor(confidence: number | undefined | null, weight: number): n
 export function scorePronunciation(targetPhrase: string, input: RecognitionInput): ScoreResult {
   const displayWords = targetPhrase.split(/\s+/).filter(Boolean);
   const target: TargetToken[] = displayWords.flatMap((w, displayIndex) =>
-    normalizeWord(w).map((text) => ({ text, displayIndex }))
+    /\[name\]/i.test(w) ? [{ text: NAME_SLOT, displayIndex }] : normalizeWord(w).map((text) => ({ text, displayIndex }))
   );
 
   const rawHeard: HeardWord[] =
@@ -235,6 +255,8 @@ export function scorePronunciation(targetPhrase: string, input: RecognitionInput
   );
 
   const { matches, extras } = align(target, heard);
+  // Un "[name]" que no se dijo no cuenta.
+  const counted = target.map((t, i) => t.text !== NAME_SLOT || matches[i] >= 0);
 
   // Calidad 0–1 por token objetivo: qué tan parecida fue la palabra y qué tan claro se oyó.
   const tokenScores = target.map((t, i) => {
@@ -251,7 +273,7 @@ export function scorePronunciation(targetPhrase: string, input: RecognitionInput
   });
 
   const words: WordResult[] = displayWords.map((display, displayIndex) => {
-    const idxs = target.map((t, i) => (t.displayIndex === displayIndex ? i : -1)).filter((i) => i >= 0);
+    const idxs = target.map((t, i) => (t.displayIndex === displayIndex && counted[i] ? i : -1)).filter((i) => i >= 0);
     if (idxs.length === 0) return { display, status: "good" as const, score: 100, heard: null };
     const s = idxs.reduce((sum, i) => sum + tokenScores[i], 0) / idxs.length;
     const heardText = idxs
@@ -276,7 +298,9 @@ export function scorePronunciation(targetPhrase: string, input: RecognitionInput
   });
 
   // El exponente hace que cada palabra fallada pese más: 1 de 6 mal ≈ 80, 2 de 6 ≈ 55.
-  const accuracy = target.length ? (tokenCredit.reduce((a, b) => a + b, 0) / target.length) ** 1.5 : 0;
+  const countedTotal = counted.filter(Boolean).length;
+  const credit = tokenCredit.reduce((sum, c, i) => sum + (counted[i] ? c : 0), 0);
+  const accuracy = countedTotal ? (credit / countedTotal) ** 1.5 : 0;
   const extraPenalty = Math.min(0.25, extras.length * 0.08);
   const globalClarity = clarityFactor(input.confidence, 0.25);
   let score = Math.round(100 * Math.max(0, Math.min(1, accuracy * globalClarity - extraPenalty)));

@@ -72,8 +72,8 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
-.text-gradient {
-  background: linear-gradient(100deg, var(--color-rose-soft), var(--color-rose) 45%, var(--color-orchid));
+.text-gold-gradient {
+  background: linear-gradient(180deg, #fbe2a4, #f0bd62 55%, #d99a3e);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
