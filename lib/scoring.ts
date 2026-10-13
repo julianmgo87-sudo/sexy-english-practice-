@@ -112,6 +112,32 @@ const CONTRACTIONS: Record<string, string> = {
 // fiable: no cuentan ni en la frase ni en lo escuchado.
 const FILLERS = new Set(["uh", "um", "umm", "hmm", "mm", "mmm", "ah", "eh", "er", "erm", "mwah", "muah", "mua", "aww", "aw"]);
 
+// Palabras que suenan igual: el reconocedor no puede saber cuál dijo, así que valen igual.
+const HOMOPHONES: string[][] = [
+  ["waist", "waste"],
+  ["butt", "but"],
+  ["hi", "high"],
+  ["know", "no"],
+  ["see", "sea"],
+  ["to", "too", "two"],
+  ["for", "four"],
+  ["hear", "here"],
+  ["where", "wear"],
+  ["there", "their"],
+  ["right", "write"],
+  ["by", "buy", "bye"],
+  ["one", "won"],
+  ["night", "knight"],
+  ["our", "hour"],
+  ["wait", "weight"],
+  ["whole", "hole"],
+  ["tease", "teas", "tees"],
+  ["feet", "feat"],
+  ["sun", "son"],
+  ["meet", "meat"],
+];
+const HOMOPHONE_GROUP = new Map(HOMOPHONES.flatMap((group, i) => group.map((w) => [w, i] as const)));
+
 /** Lugar de "[name]" en la frase: acepta cualquier nombre y no resta si se omite. */
 const NAME_SLOT = "*";
 
@@ -163,6 +189,8 @@ function levenshtein(a: string, b: string): number {
 /** Similitud 0–1 entre dos palabras normalizadas. */
 export function wordSimilarity(a: string, b: string): number {
   if (a === b || a === NAME_SLOT || b === NAME_SLOT) return 1;
+  const group = HOMOPHONE_GROUP.get(a);
+  if (group !== undefined && group === HOMOPHONE_GROUP.get(b)) return 1;
   const longest = Math.max(a.length, b.length);
   if (longest === 0) return 1;
   return Math.max(0, 1 - levenshtein(a, b) / longest);

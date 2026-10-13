@@ -87,3 +87,10 @@ test("los besos y números con guion no restan", () => {
   assert.equal(scorePronunciation("I'm online Monday to Friday at 9 pm Eastern.", { transcript: "I'm online Monday to Friday at 9pm Eastern" }).score, 100);
   assert.equal(scorePronunciation("I'm online Monday to Friday at 9 pm Eastern.", { transcript: "I'm online Monday to Friday at 9 p.m. Eastern" }).score, 100);
 });
+
+test("los homófonos cuentan como la palabra correcta", () => {
+  assert.equal(scorePronunciation("waist", { transcript: "Waste." }).score, 100);
+  assert.equal(scorePronunciation("butt", { transcript: "but" }).score, 100);
+  assert.equal(scorePronunciation("I want to hear what you're thinking.", { transcript: "I want to here what you're thinking" }).score, 100);
+  assert.ok(scorePronunciation("hot", { transcript: "hat" }).score < 90);
+});

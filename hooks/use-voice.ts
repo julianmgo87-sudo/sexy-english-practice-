@@ -47,25 +47,20 @@ function pickBrowserVoice(): SpeechSynthesisVoice | null {
   );
 }
 
-interface UseVoiceOptions {
-  /** Hay voz premium (OpenAI) disponible en el servidor. */
-  live: boolean;
-  /** Versión de la voz, para que el navegador no use audios viejos. */
-  version: string;
-}
-
 /**
- * Reproduce la frase de ejemplo: con la voz premium del servidor si está configurada,
- * o con la mejor voz femenina en inglés del dispositivo si no.
+ * Reproduce la frase de ejemplo probando las fuentes en orden (el audio con voz natural
+ * pregenerado y, si está configurada, la voz de OpenAI). Si ninguna funciona, usa la
+ * mejor voz femenina en inglés del dispositivo.
  */
-export function useVoice({ live, version }: UseVoiceOptions) {
+export function useVoice({ sources }: { sources: string[] }) {
   const [state, setState] = useState<VoiceState>(IDLE);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const liveFailedRef = useRef(false);
+  // Primera fuente que no ha fallado, para no reintentar una que ya sabemos que falla.
+  const firstSourceRef = useRef(0);
 
   useEffect(() => {
     // Chrome carga la lista de voces de forma asíncrona: pedirla temprano hace que ya
-    // esté lista cuando toquen "Escuchar".
+    // esté lista si hay que usar la voz del dispositivo.
     if ("speechSynthesis" in window) window.speechSynthesis.getVoices();
   }, []);
 
@@ -105,41 +100,47 @@ export function useVoice({ live, version }: UseVoiceOptions) {
   const play = useCallback(
     (phrase: { id: string; en: string }, slow = false) => {
       stop();
-      if (!live || liveFailedRef.current) {
-        speakWithBrowser(spokenText(phrase.en), slow);
-        return;
-      }
 
-      const audio = new Audio(`/api/tts?id=${encodeURIComponent(phrase.id)}&v=${version}`);
-      audio.defaultPlaybackRate = slow ? 0.75 : 1;
-      audio.playbackRate = slow ? 0.75 : 1;
-      audio.preservesPitch = true;
-      audioRef.current = audio;
-      setState({ status: "loading", slow });
-
-      audio.onplaying = () => {
-        if (audioRef.current === audio) setState({ status: "playing", slow });
-      };
-      audio.onended = () => {
-        if (audioRef.current === audio) {
+      const playFrom = (index: number) => {
+        const src = sources[index];
+        if (!src) {
           audioRef.current = null;
-          setState(IDLE);
+          speakWithBrowser(spokenText(phrase.en), slow);
+          return;
         }
+
+        const audio = new Audio(src);
+        audio.defaultPlaybackRate = slow ? 0.75 : 1;
+        audio.playbackRate = slow ? 0.75 : 1;
+        audio.preservesPitch = true;
+        audioRef.current = audio;
+        setState({ status: "loading", slow });
+
+        audio.onplaying = () => {
+          if (audioRef.current === audio) setState({ status: "playing", slow });
+        };
+        audio.onended = () => {
+          if (audioRef.current === audio) {
+            audioRef.current = null;
+            setState(IDLE);
+          }
+        };
+        audio.onerror = () => {
+          if (audioRef.current !== audio) return;
+          // Esta fuente falló (archivo faltante, sin clave, sin red...): probamos la siguiente.
+          firstSourceRef.current = index + 1;
+          playFrom(index + 1);
+        };
+        audio.play().catch((err: unknown) => {
+          if (audioRef.current !== audio) return;
+          if (err instanceof DOMException && err.name === "AbortError") return;
+          audio.onerror?.(new Event("error"));
+        });
       };
-      audio.onerror = () => {
-        if (audioRef.current !== audio) return;
-        // La voz premium falló (sin clave, sin saldo, sin red...): seguimos con la del dispositivo.
-        liveFailedRef.current = true;
-        audioRef.current = null;
-        speakWithBrowser(spokenText(phrase.en), slow);
-      };
-      audio.play().catch((err: unknown) => {
-        if (audioRef.current !== audio) return;
-        if (err instanceof DOMException && err.name === "AbortError") return;
-        audio.onerror?.(new Event("error"));
-      });
+
+      playFrom(firstSourceRef.current);
     },
-    [live, version, speakWithBrowser, stop]
+    [sources, speakWithBrowser, stop]
   );
 
   return { state, play, stop };

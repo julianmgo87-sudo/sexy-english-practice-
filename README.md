@@ -15,30 +15,51 @@ no comparte código ni datos con ninguna otra aplicación.
 
 1. Entra a [vercel.com/new](https://vercel.com/new) con tu cuenta de GitHub.
 2. Importa el repositorio `sexy-english-practice-`.
-3. (Opcional, recomendado) En **Environment Variables** agrega `OPENAI_API_KEY` con tu clave de OpenAI.
+3. (Opcional) En **Environment Variables** agrega `OPENAI_API_KEY` para una calificación más precisa.
 4. Haz clic en **Deploy**. En un par de minutos tendrás un link como
    `https://sexy-english-practice.vercel.app` para compartir con las modelos.
    En **Settings → Domains** puedes ponerle tu propio dominio.
 
 Si agregas o cambias variables de entorno después, vuelve a desplegar (**Deployments → Redeploy**).
 
-## Dos modos de voz
+## La voz de ejemplo
+
+Cada frase trae su audio de ejemplo ya grabado en `public/audio/` con una **voz femenina
+neuronal, natural y cálida** (Kokoro, voz `af_bella`, un poco más lenta de lo normal). No
+depende del celular, no necesita ninguna clave y no cuesta nada. El botón **Lento** la
+reproduce al 75 % sin cambiar el tono.
+
+Si agregas o cambias frases, regenera los audios (solo se generan los nuevos o cambiados):
+
+```bash
+python3 -m venv .venv-audio
+.venv-audio/bin/pip install kokoro-onnx soundfile
+mkdir -p ~/kokoro && cd ~/kokoro
+curl -LO https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx
+curl -LO https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin
+cd -
+.venv-audio/bin/python scripts/generate-audio.py --models ~/kokoro
+```
+
+Para otra voz: `--voice af_nicole` (susurrada), `af_heart`, `af_sky`... o una mezcla
+`--voice "af_bella:60,af_nicole:40"`; y `--speed 0.85` para más lenta. Requiere Node 22+ y ffmpeg.
+Kokoro es de código abierto (Apache 2.0), apto para uso comercial.
+
+Si una frase no tiene audio grabado (p. ej. la agregaste y aún no regeneraste), la app usa la
+voz de OpenAI si hay `OPENAI_API_KEY`, o si no la voz del dispositivo.
+
+## Calificación: con o sin clave de OpenAI
 
 | | Sin clave de OpenAI | Con `OPENAI_API_KEY` |
 |---|---|---|
-| Voz de ejemplo | Voz femenina en inglés del propio celular/computador (depende del dispositivo) | Voz femenina premium, cálida y coqueta (OpenAI `gpt-4o-mini-tts`, voz `marin`) |
 | Calificación | Reconocimiento de voz del navegador (Chrome, Edge, Safari) | Transcripción con IA y confianza **por palabra**: detecta mejor el acento |
-| Costo | Gratis | Centavos: cada frase se genera una sola vez y queda en caché; cada intento cuesta ~US$0,0005 |
+| Costo | Gratis | Cada intento cuesta ~US$0,0005 |
 
-La clave nunca llega al navegador. Para limitar el gasto, el servidor solo genera audio de las
-frases del libro (nunca de texto libre) y rechaza grabaciones de más de ~2 MB.
+La clave nunca llega al navegador. Para limitar el gasto, el servidor rechaza grabaciones de
+más de ~2 MB y solo genera voz para frases del libro (nunca texto libre).
 
-Variables opcionales (ver `.env.example`):
-
-- `OPENAI_TTS_VOICE`: otra voz de OpenAI (`shimmer`, `coral`, `nova`, `sage`...).
-- `OPENAI_TTS_MODEL`, `OPENAI_TRANSCRIBE_MODEL`: otros modelos de OpenAI.
-
-El estilo de la voz (sexy, cálida, pausada y muy clara) está en `VOICE_INSTRUCTIONS`, en `lib/config.ts`.
+Variables opcionales (ver `.env.example`): `OPENAI_TRANSCRIBE_MODEL`, y para la voz de respaldo
+`OPENAI_TTS_VOICE`, `OPENAI_TTS_MODEL` (estilo en `VOICE_INSTRUCTIONS`, `lib/config.ts`).
 
 ## Las frases del libro
 

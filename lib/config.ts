@@ -1,8 +1,8 @@
 import { shortHash } from "./hash";
 
-// Configuración del lado del servidor. Sin OPENAI_API_KEY la app usa la voz y el
-// reconocimiento de voz del navegador; con ella se activa la voz premium y una
-// calificación más precisa.
+// Configuración del lado del servidor. La voz de ejemplo viene pregrabada (public/audio).
+// Con OPENAI_API_KEY la calificación usa transcripción con IA (más precisa) y las frases
+// que aún no tengan audio pregrabado se generan con la voz de OpenAI.
 
 export function isLiveAIConfigured(): boolean {
   return Boolean(process.env.OPENAI_API_KEY?.trim());

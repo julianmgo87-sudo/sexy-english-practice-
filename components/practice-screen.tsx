@@ -17,7 +17,8 @@ import { AttemptHistory } from "./attempt-history";
 interface PracticeScreenProps {
   phraseId: string;
   live: boolean;
-  ttsVersion: string;
+  /** Audios de ejemplo en orden de preferencia. */
+  voiceSources: string[];
 }
 
 export function PracticeScreen(props: PracticeScreenProps) {
@@ -29,11 +30,11 @@ interface AttemptResult extends ScoreResult {
   previousBest?: number;
 }
 
-function Practice({ phraseId, live, ttsVersion, profile }: PracticeScreenProps & { profile: string }) {
+function Practice({ phraseId, live, voiceSources, profile }: PracticeScreenProps & { profile: string }) {
   const phrase = getPhrase(phraseId)!;
   const { prev, next } = getNeighbors(phraseId);
   const progress = useProgress(profile)[phrase.id];
-  const voice = useVoice({ live, version: ttsVersion });
+  const voice = useVoice({ sources: voiceSources });
   const attempt = usePronunciationAttempt({ live });
   const [result, setResult] = useState<AttemptResult | null>(null);
   const [showSounds, setShowSounds] = useState(false);
@@ -168,8 +169,7 @@ function Practice({ phraseId, live, ttsVersion, profile }: PracticeScreenProps &
       </nav>
 
       <p className="mt-6 text-center text-xs text-faint">
-        {live ? "Voz y calificación con IA" : "Voz y reconocimiento de tu dispositivo"}
-        {attempt.engine === "browser" && live ? " · calificando con el navegador" : ""}
+        {attempt.engine === "ai" ? "Calificación con IA" : "Calificación con el reconocimiento de voz de tu dispositivo"}
       </p>
     </main>
   );
