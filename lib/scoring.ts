@@ -44,7 +44,8 @@ export interface ScoreResult {
 
 const CONTRACTIONS: Record<string, string> = {
   "i'm": "i am",
-  "you're": "you are",
+  // "you're" y "your" suenan igual al hablar: el reconocedor escribe cualquiera de los dos.
+  "you're": "your",
   "we're": "we are",
   "they're": "they are",
   "he's": "he is",
@@ -135,6 +136,7 @@ const HOMOPHONES: string[][] = [
   ["feet", "feat"],
   ["sun", "son"],
   ["meet", "meat"],
+  ["sink", "sync"],
 ];
 const HOMOPHONE_GROUP = new Map(HOMOPHONES.flatMap((group, i) => group.map((w) => [w, i] as const)));
 

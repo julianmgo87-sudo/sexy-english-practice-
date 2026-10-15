@@ -29,9 +29,9 @@ ROOT = Path(__file__).resolve().parent.parent
 AUDIO_DIR = ROOT / "public" / "audio"
 MANIFEST = ROOT / "lib" / "audio-manifest.json"
 
-# Voz por defecto: cálida y sensual. Otras voces femeninas de Kokoro: af_heart, af_nicole
-# (susurrada), af_sky, af_sarah, af_nova. También se pueden mezclar: "af_bella:60,af_nicole:40".
-DEFAULT_VOICE = "af_bella"
+# Voz por defecto: mezcla de af_bella (cálida) con af_nicole (susurrada), la que eligieron
+# entre las muestras. Otras voces femeninas de Kokoro: af_heart, af_sky, af_sarah, af_nova.
+DEFAULT_VOICE = "af_bella:60,af_nicole:40"
 DEFAULT_SPEED = 0.9
 
 # Ajustes por frase para palabras sueltas que con la voz por defecto no se entienden bien
@@ -39,13 +39,12 @@ DEFAULT_SPEED = 0.9
 # "text" cambia solo lo que se le pasa a la voz (p. ej. la entonación con "!"), no la frase;
 # con "phonemes" el texto va en símbolos fonéticos (IPA).
 OVERRIDES = {
-    "vocab-cuerpo-2": {"voice": "af_sky"},  # neck
+    "vocab-cuerpo-2": {"text": "nˈek.", "phonemes": True},  # neck: sonaba a "knack"
     "vocab-cuerpo-4": {"text": "tʃʰˈɛst.", "phonemes": True},  # chest: la "ch" se perdía
-    "vocab-cuerpo-10": {"voice": "af_heart"},  # ass
-    "vocab-sensaciones-4": {"voice": "af_nicole"},  # horny
-    "vocab-acciones-8": {"voice": "af_nicole", "text": "Shake!"},  # shake
-    "drill-sonidos-8": {"speed": 0.85},  # beach: a 0.9 se oía "beat"
+    "drill-sonidos-12": {"text": "Sink!"},  # sink: sonaba a "think" (justo el par que se practica)
+    "pose-4-4": {"speed": 0.85},  # "you'd do" se fundía en "you do"
 }
+
 
 def gentle_trim(samples, sample_rate, threshold=0.004, pad_seconds=0.15):
     """Quita el silencio de los extremos sin comerse sonidos suaves del inicio ("ch", "h", "s").

@@ -91,6 +91,12 @@ test("los besos y números con guion no restan", () => {
 test("los homófonos cuentan como la palabra correcta", () => {
   assert.equal(scorePronunciation("waist", { transcript: "Waste." }).score, 100);
   assert.equal(scorePronunciation("butt", { transcript: "but" }).score, 100);
+  assert.equal(scorePronunciation("sink", { transcript: "sync" }).score, 100);
   assert.equal(scorePronunciation("I want to hear what you're thinking.", { transcript: "I want to here what you're thinking" }).score, 100);
   assert.ok(scorePronunciation("hot", { transcript: "hat" }).score < 90);
+});
+
+test("«you're» y «your» cuentan igual porque suenan igual", () => {
+  assert.equal(scorePronunciation("You're trouble, aren't you?", { transcript: "Your trouble, aren't you?" }).score, 100);
+  assert.equal(scorePronunciation("Tell me your fantasy.", { transcript: "tell me you're fantasy" }).score, 100);
 });

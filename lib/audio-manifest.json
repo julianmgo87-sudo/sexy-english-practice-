@@ -1,297 +1,298 @@
 {
- "voice": "af_bella",
+ "voice": "af_bella:60,af_nicole:40",
  "speed": 0.9,
  "phrases": {
   "top15-1": {
    "text": "pmgtnu",
-   "v": "97f27a37"
+   "v": "57ea7a52"
   },
   "top15-2": {
    "text": "ss3shz",
-   "v": "7ea865ea"
+   "v": "db14a1e8"
   },
   "top15-3": {
    "text": "ir6iar",
-   "v": "212765e2"
+   "v": "eaec1ecf"
   },
   "top15-4": {
    "text": "74efk1",
-   "v": "73b31a35"
+   "v": "d1644d9c"
   },
   "top15-5": {
    "text": "hhyops",
-   "v": "e7803f6a"
+   "v": "c9165256"
   },
   "top15-6": {
    "text": "1pw5eho",
-   "v": "71659356"
+   "v": "90e48e22"
   },
   "top15-7": {
    "text": "1aufys8",
-   "v": "e42f5a5a"
+   "v": "1440aae7"
   },
   "top15-8": {
    "text": "1rchkla",
-   "v": "ab490cae"
+   "v": "38c9d070"
   },
   "top15-9": {
    "text": "1kspcs1",
-   "v": "6f216d34"
+   "v": "54313773"
   },
   "top15-10": {
    "text": "1458ywg",
-   "v": "5e07444d"
+   "v": "9aeca657"
   },
   "top15-11": {
    "text": "njtji3",
-   "v": "3c595695"
+   "v": "1366b5d3"
   },
   "top15-12": {
    "text": "jhhvu0",
-   "v": "146b9c4c"
+   "v": "e5da175e"
   },
   "top15-13": {
    "text": "6p50wh",
-   "v": "b57b8c64"
+   "v": "dfa14fd0"
   },
   "top15-14": {
    "text": "evenf2",
-   "v": "cd0725ab"
+   "v": "b1a032fe"
   },
   "top15-15": {
    "text": "1sut3j6",
-   "v": "c0cd1c41"
+   "v": "9d8903ea"
   },
   "saludos-1": {
    "text": "1gu4rxs",
-   "v": "700b62f6"
+   "v": "b7d7add1"
   },
   "saludos-2": {
    "text": "1w6wdhx",
-   "v": "7e4027d4"
+   "v": "bb1d4309"
   },
   "saludos-3": {
    "text": "atzvlg",
-   "v": "0acff9b1"
+   "v": "3baf199e"
   },
   "saludos-4": {
    "text": "vjhnmq",
-   "v": "91cd4aae"
+   "v": "60b55dcc"
   },
   "saludos-5": {
    "text": "131ldte",
-   "v": "24015640"
+   "v": "12207cfe"
   },
   "saludos-6": {
    "text": "fgqkjs",
-   "v": "8af7786e"
+   "v": "c6ca1253"
   },
   "saludos-7": {
    "text": "pkb27d",
-   "v": "e2b85c93"
+   "v": "eb535c68"
   },
   "small-talk-1": {
    "text": "hmwfnx",
-   "v": "20c3f55c"
+   "v": "dfa67932"
   },
   "small-talk-2": {
    "text": "127sdnq",
-   "v": "26f4a393"
+   "v": "2dffd7c7"
   },
   "small-talk-3": {
    "text": "14kj3xn",
-   "v": "e5ca2858"
+   "v": "ffdb9dc9"
   },
   "small-talk-4": {
    "text": "9abybg",
-   "v": "b2fb0cd8"
+   "v": "e33b23ed"
   },
   "small-talk-5": {
    "text": "sqwe0o",
-   "v": "07d11cab"
+   "v": "b14fc3a1"
   },
   "small-talk-6": {
    "text": "1jjjrcz",
-   "v": "465d767e"
+   "v": "06434499"
   },
   "small-talk-7": {
    "text": "1p54q7p",
-   "v": "6c1cbda3"
+   "v": "6cb2a42b"
   },
   "small-talk-8": {
    "text": "yc6p9q",
-   "v": "65fb06cb"
+   "v": "251d40ab"
   },
   "flirteo-1": {
    "text": "19kd3n9",
-   "v": "b74d8aba"
+   "v": "52e536de"
   },
   "flirteo-2": {
    "text": "gx8581",
-   "v": "116a5eb0"
+   "v": "510833b6"
   },
   "flirteo-3": {
    "text": "binecm",
-   "v": "6564ebd0"
+   "v": "9ede4252"
   },
   "flirteo-4": {
    "text": "149lwto",
-   "v": "7663959b"
+   "v": "cf8a4a70"
   },
   "flirteo-5": {
    "text": "7heq6z",
-   "v": "306f97de"
+   "v": "24b5e6d0"
   },
   "flirteo-6": {
    "text": "1320nh4",
-   "v": "7754b488"
+   "v": "ff946e0e"
   },
   "flirteo-7": {
    "text": "kl6ld0",
-   "v": "b32dad42"
+   "v": "b0847a3b"
   },
   "flirteo-8": {
    "text": "10nrlj3",
-   "v": "68ad5cb0"
+   "v": "d3b61342"
   },
   "pedidos-1": {
    "text": "4vwrj5",
-   "v": "70efbe71"
+   "v": "c33c5f8d"
   },
   "pedidos-2": {
    "text": "1pjyip",
-   "v": "ffc88a3f"
+   "v": "e6b58136"
   },
   "pedidos-3": {
    "text": "15uf09q",
-   "v": "84586c4b"
+   "v": "c873ca3b"
   },
   "pedidos-4": {
    "text": "nac8k0",
-   "v": "020678f5"
+   "v": "28bf3faf"
   },
   "pedidos-5": {
    "text": "o6mzeh",
-   "v": "db986041"
+   "v": "00571247"
   },
   "dirty-talk-1": {
    "text": "k85ekk",
-   "v": "a8b634cc"
+   "v": "df90acef"
   },
   "dirty-talk-2": {
    "text": "16bf0mf",
-   "v": "dc7d05f8"
+   "v": "65c17c7f"
   },
   "dirty-talk-3": {
    "text": "1xmwau0",
-   "v": "d3a30e34"
+   "v": "bce2bcf0"
   },
   "dirty-talk-4": {
    "text": "cy8uqb",
-   "v": "747bd10a"
+   "v": "811943d7"
   },
   "dirty-talk-5": {
    "text": "1p57djw",
-   "v": "54e9d806"
+   "v": "39fa3b63"
   },
   "dirty-talk-6": {
    "text": "w4pzee",
-   "v": "909f723d"
+   "v": "f54a1ca0"
   },
   "roleplay-1": {
    "text": "1srvaaf",
-   "v": "be3f911c"
+   "v": "1a4fe2de"
   },
   "roleplay-2": {
    "text": "1hsev8l",
-   "v": "fd7e9d55"
+   "v": "29313501"
   },
   "roleplay-3": {
    "text": "1ek4bjv",
-   "v": "70471ffd"
+   "v": "f53d41e3"
   },
   "roleplay-4": {
    "text": "u6hlfw",
-   "v": "fb45ff74"
+   "v": "f27aad44"
   },
   "tips-1": {
    "text": "ir6iar",
-   "v": "212765e2"
+   "v": "eaec1ecf"
   },
   "tips-2": {
    "text": "qibrtx",
-   "v": "7bed66fa"
+   "v": "3b12e28d"
   },
   "tips-3": {
    "text": "hhyops",
-   "v": "e7803f6a"
+   "v": "c9165256"
   },
   "tips-4": {
    "text": "1pw5eho",
-   "v": "71659356"
+   "v": "90e48e22"
   },
   "tips-5": {
    "text": "1tnc8k1",
-   "v": "832d47f6"
+   "v": "cd7d784a"
   },
   "tips-6": {
    "text": "128x323",
-   "v": "8b9968ef"
+   "v": "4d143916"
   },
   "tips-7": {
    "text": "7k3ocy",
-   "v": "d5d5eae4"
+   "v": "0a905d4b"
   },
   "privados-1": {
    "text": "1kspcs1",
-   "v": "6f216d34"
+   "v": "54313773"
   },
   "privados-2": {
    "text": "1458ywg",
-   "v": "5e07444d"
+   "v": "9aeca657"
   },
   "privados-3": {
    "text": "vljkd2",
-   "v": "6f232054"
+   "v": "fcbd8102"
   },
   "privados-4": {
    "text": "z3w4ap",
-   "v": "bd218a47"
+   "v": "624156ae"
   },
   "customs-1": {
    "text": "5novi7",
-   "v": "c16d9795"
+   "v": "e89f7408"
   },
   "customs-2": {
    "text": "njtji3",
-   "v": "3c595695"
+   "v": "1366b5d3"
   },
   "customs-3": {
    "text": "qe5if",
-   "v": "d642fe14"
+   "v": "4bb5066a"
   },
   "customs-4": {
    "text": "x5vsvs",
-   "v": "4b846001"
+   "v": "c4b58d7c"
   },
   "vocab-cuerpo-1": {
    "text": "ykm399",
-   "v": "cbed1ed8"
+   "v": "610afb87"
   },
   "vocab-cuerpo-2": {
    "text": "yknj0m",
-   "v": "db11ecdc",
+   "v": "1c85cc79",
    "override": {
-    "voice": "af_sky"
+    "text": "n\u02c8ek.",
+    "phonemes": true
    }
   },
   "vocab-cuerpo-3": {
    "text": "1fm8kim",
-   "v": "b9e316e5"
+   "v": "fd020100"
   },
   "vocab-cuerpo-4": {
    "text": "482bfg",
-   "v": "beda7e82",
+   "v": "72582510",
    "override": {
     "text": "t\u0283\u02b0\u02c8\u025bst.",
     "phonemes": true
@@ -299,476 +300,469 @@
   },
   "vocab-cuerpo-5": {
    "text": "47iifu",
-   "v": "d0b008f5"
+   "v": "6da34985"
   },
   "vocab-cuerpo-6": {
    "text": "4m1dxp",
-   "v": "06cc5089"
+   "v": "8cf4821e"
   },
   "vocab-cuerpo-7": {
    "text": "ykj0c9",
-   "v": "80bf67e0"
+   "v": "31d4954e"
   },
   "vocab-cuerpo-8": {
    "text": "ykeo5g",
-   "v": "ed1cffaa"
+   "v": "7cbd8914"
   },
   "vocab-cuerpo-9": {
    "text": "47iiwi",
-   "v": "efa860a9"
+   "v": "88b41e28"
   },
   "vocab-cuerpo-10": {
    "text": "377364",
-   "v": "9f154f04",
-   "override": {
-    "voice": "af_heart"
-   }
+   "v": "41b3cd32"
   },
   "vocab-cuerpo-11": {
    "text": "8c2vvw",
-   "v": "031de5ef"
+   "v": "9493db6e"
   },
   "vocab-cuerpo-12": {
    "text": "yklzo0",
-   "v": "051e175d"
+   "v": "ea80554d"
   },
   "vocab-cuerpo-13": {
    "text": "ykhd8p",
-   "v": "d1dc2ec5"
+   "v": "43211bce"
   },
   "vocab-acciones-1": {
    "text": "4k00xj",
-   "v": "5357b50f"
+   "v": "e7736928"
   },
   "vocab-acciones-2": {
    "text": "4k86mg",
-   "v": "d01df51f"
+   "v": "51c35143"
   },
   "vocab-acciones-3": {
    "text": "yklblr",
-   "v": "a4851acb"
+   "v": "615dcddd"
   },
   "vocab-acciones-4": {
    "text": "jcuyes",
-   "v": "9688a4ab"
+   "v": "99316ec9"
   },
   "vocab-acciones-5": {
    "text": "15p2vve",
-   "v": "c2559768"
+   "v": "a0294cfd"
   },
   "vocab-acciones-6": {
    "text": "1h01262",
-   "v": "ed0cf060"
+   "v": "80c97564"
   },
   "vocab-acciones-7": {
    "text": "iafml1",
-   "v": "48178b6f"
+   "v": "98c3affe"
   },
   "vocab-acciones-8": {
    "text": "4jcwup",
-   "v": "922ad2e6",
-   "override": {
-    "voice": "af_nicole",
-    "text": "Shake!"
-   }
+   "v": "12b36861"
   },
   "vocab-acciones-9": {
    "text": "4kdzea",
-   "v": "c79ff828"
+   "v": "de8008e1"
   },
   "vocab-acciones-10": {
    "text": "4jj2rm",
-   "v": "2c127f27"
+   "v": "fae5712d"
   },
   "vocab-acciones-11": {
    "text": "g3lt1l",
-   "v": "3de58136"
+   "v": "cf5ec17a"
   },
   "vocab-sensaciones-1": {
    "text": "3778y8",
-   "v": "3b6a8fb3"
+   "v": "88946b73"
   },
   "vocab-sensaciones-2": {
    "text": "kcnc5",
-   "v": "1bf25cb6"
+   "v": "05c2826d"
   },
   "vocab-sensaciones-3": {
    "text": "377i0p",
-   "v": "2ed0baf0"
+   "v": "924f9e5e"
   },
   "vocab-sensaciones-4": {
    "text": "4br3n9",
-   "v": "da0de2d4",
-   "override": {
-    "voice": "af_nicole"
-   }
+   "v": "ed717adc"
   },
   "vocab-sensaciones-5": {
    "text": "13mmyc",
-   "v": "7a0782c5"
+   "v": "dac7dc9f"
   },
   "vocab-sensaciones-6": {
    "text": "377lat",
-   "v": "4f30d1ee"
+   "v": "2744dcf6"
   },
   "vocab-sensaciones-7": {
    "text": "485mqj",
-   "v": "676a1366"
+   "v": "39ff193c"
   },
   "vocab-sensaciones-8": {
    "text": "7rqqzz",
-   "v": "6c15bf6a"
+   "v": "0d9dc9e3"
   },
   "vocab-sensaciones-9": {
    "text": "ykfts3",
-   "v": "0883e490"
+   "v": "0db91a02"
   },
   "vocab-sensaciones-10": {
    "text": "ykrm5d",
-   "v": "e567575a"
+   "v": "38692f2a"
   },
   "cierre-1": {
    "text": "7p7gkq",
-   "v": "19143cef"
+   "v": "9cd95c68"
   },
   "cierre-2": {
    "text": "9ddp2m",
-   "v": "3144c02c"
+   "v": "a3270142"
   },
   "cierre-3": {
    "text": "8dj7hm",
-   "v": "99d37636"
+   "v": "34cb4a20"
   },
   "cierre-4": {
    "text": "hyiios",
-   "v": "028b5d47"
+   "v": "52ffd0dd"
   },
   "cierre-5": {
    "text": "veqw7b",
-   "v": "8360c6c5"
+   "v": "c420aabe"
   },
   "cierre-6": {
    "text": "1sut3j6",
-   "v": "c0cd1c41"
+   "v": "9d8903ea"
   },
   "cierre-7": {
    "text": "stegk9",
-   "v": "c0b9c656"
+   "v": "c23ae21d"
   },
   "pose-1-1": {
    "text": "197agsg",
-   "v": "393a8ab3"
+   "v": "4071a630"
   },
   "pose-1-2": {
    "text": "e0epd4",
-   "v": "a75a93db"
+   "v": "2ef672b7"
   },
   "pose-1-3": {
    "text": "1dtb226",
-   "v": "dd1fb057"
+   "v": "3127901d"
   },
   "pose-1-4": {
    "text": "m1qdmt",
-   "v": "b4615e60"
+   "v": "bb628a4b"
   },
   "pose-1-5": {
    "text": "1h82jlq",
-   "v": "5806e5c5"
+   "v": "cc61c6be"
   },
   "pose-2-1": {
    "text": "zbysbq",
-   "v": "d2338657"
+   "v": "9491d560"
   },
   "pose-2-2": {
    "text": "1ohce7w",
-   "v": "8e7db417"
+   "v": "03235b6f"
   },
   "pose-2-3": {
    "text": "1ht5f95",
-   "v": "3be3ff29"
+   "v": "3adb8830"
   },
   "pose-2-4": {
    "text": "ewtxy0",
-   "v": "5a68d274"
+   "v": "9d034fa8"
   },
   "pose-2-5": {
    "text": "9sttmt",
-   "v": "97708f47"
+   "v": "15a3f199"
   },
   "pose-3-1": {
    "text": "2uhj78",
-   "v": "22e0e253"
+   "v": "0b96c6b7"
   },
   "pose-3-2": {
    "text": "1ohtfsn",
-   "v": "1785ad5e"
+   "v": "20395333"
   },
   "pose-3-3": {
    "text": "lj9t9p",
-   "v": "ed8cd1d3"
+   "v": "1813d2f5"
   },
   "pose-3-4": {
    "text": "15kvgqv",
-   "v": "12868d0f"
+   "v": "8b203896"
   },
   "pose-3-5": {
    "text": "1m6zrmi",
-   "v": "4e03f151"
+   "v": "f01fb219"
   },
   "pose-4-1": {
    "text": "l9wn32",
-   "v": "4b3c45db"
+   "v": "9b8d6963"
   },
   "pose-4-2": {
    "text": "zwpybl",
-   "v": "47a34fb5"
+   "v": "38d99483"
   },
   "pose-4-3": {
    "text": "o109vb",
-   "v": "7e0c435a"
+   "v": "bcad273b"
   },
   "pose-4-4": {
    "text": "1oxt7h6",
-   "v": "2ae31a8d"
-  },
-  "pose-4-5": {
-   "text": "l3806n",
-   "v": "13cb2498"
-  },
-  "pose-5-1": {
-   "text": "1bpu8s3",
-   "v": "75f99d75"
-  },
-  "pose-5-2": {
-   "text": "tmg88n",
-   "v": "cc5a6cd3"
-  },
-  "pose-5-3": {
-   "text": "49kvyo",
-   "v": "159f6434"
-  },
-  "pose-5-4": {
-   "text": "glzuc0",
-   "v": "28af6ddd"
-  },
-  "pose-5-5": {
-   "text": "1a5jbdp",
-   "v": "96607c95"
-  },
-  "pose-6-1": {
-   "text": "1r231lb",
-   "v": "63fe38ee"
-  },
-  "pose-6-2": {
-   "text": "1y3djdy",
-   "v": "aa301693"
-  },
-  "pose-6-3": {
-   "text": "1pvc6x8",
-   "v": "91a32be9"
-  },
-  "pose-6-4": {
-   "text": "15570vs",
-   "v": "c058b086"
-  },
-  "pose-6-5": {
-   "text": "1yfsvf6",
-   "v": "833eeb51"
-  },
-  "pose-7-1": {
-   "text": "1szpz0p",
-   "v": "a0441a57"
-  },
-  "pose-7-2": {
-   "text": "10o34u1",
-   "v": "6e838488"
-  },
-  "pose-7-3": {
-   "text": "1vqitio",
-   "v": "e2310bb7"
-  },
-  "pose-7-4": {
-   "text": "rtg59i",
-   "v": "ada4aa88"
-  },
-  "pose-7-5": {
-   "text": "vhfuz9",
-   "v": "e3c5afea"
-  },
-  "pose-8-1": {
-   "text": "1d5f7fe",
-   "v": "9288f208"
-  },
-  "pose-8-2": {
-   "text": "1it252c",
-   "v": "2f13d0c5"
-  },
-  "pose-8-3": {
-   "text": "1t7hpft",
-   "v": "727c94c3"
-  },
-  "pose-8-4": {
-   "text": "1hpcdd9",
-   "v": "3aa3dae4"
-  },
-  "pose-8-5": {
-   "text": "1siwvw",
-   "v": "8b9dded6"
-  },
-  "combos-1": {
-   "text": "5ypmwt",
-   "v": "facd38ea"
-  },
-  "combos-2": {
-   "text": "1tu21gz",
-   "v": "ab766431"
-  },
-  "combos-3": {
-   "text": "1w75c8o",
-   "v": "6432848c"
-  },
-  "combos-4": {
-   "text": "164zz8k",
-   "v": "6c0f6d14"
-  },
-  "combos-5": {
-   "text": "rarqa",
-   "v": "2019fa68"
-  },
-  "universales-1": {
-   "text": "syqfvc",
-   "v": "5999aed5"
-  },
-  "universales-2": {
-   "text": "1h4r2cx",
-   "v": "2b2cb123"
-  },
-  "universales-3": {
-   "text": "12dlbbt",
-   "v": "1d31908e"
-  },
-  "universales-4": {
-   "text": "1bue8wp",
-   "v": "c20015b6"
-  },
-  "universales-5": {
-   "text": "11i8ndj",
-   "v": "f40ed1f9"
-  },
-  "universales-6": {
-   "text": "16orl31",
-   "v": "4c2fce1d"
-  },
-  "universales-7": {
-   "text": "1uib2q4",
-   "v": "5de97c76"
-  },
-  "drill-voz-1": {
-   "text": "me48yd",
-   "v": "1e112f75"
-  },
-  "drill-voz-2": {
-   "text": "ss3shz",
-   "v": "7ea865ea"
-  },
-  "drill-voz-3": {
-   "text": "7heq6z",
-   "v": "306f97de"
-  },
-  "drill-voz-4": {
-   "text": "1pw5eho",
-   "v": "71659356"
-  },
-  "drill-sonidos-1": {
-   "text": "yklblr",
-   "v": "a4851acb"
-  },
-  "drill-sonidos-2": {
-   "text": "ykl8e9",
-   "v": "eed594ce"
-  },
-  "drill-sonidos-3": {
-   "text": "3778y8",
-   "v": "3b6a8fb3"
-  },
-  "drill-sonidos-4": {
-   "text": "3778le",
-   "v": "b255a5d3"
-  },
-  "drill-sonidos-5": {
-   "text": "ykudi7",
-   "v": "01a832a3"
-  },
-  "drill-sonidos-6": {
-   "text": "4mc8es",
-   "v": "0fc87af3"
-  },
-  "drill-sonidos-7": {
-   "text": "4jd02m",
-   "v": "e963123a"
-  },
-  "drill-sonidos-8": {
-   "text": "47aheg",
-   "v": "952e720d",
+   "v": "2b1d3062",
    "override": {
     "speed": 0.85
    }
   },
+  "pose-4-5": {
+   "text": "l3806n",
+   "v": "14d1121f"
+  },
+  "pose-5-1": {
+   "text": "1bpu8s3",
+   "v": "90221c6f"
+  },
+  "pose-5-2": {
+   "text": "tmg88n",
+   "v": "6da7d5e1"
+  },
+  "pose-5-3": {
+   "text": "49kvyo",
+   "v": "2cf65985"
+  },
+  "pose-5-4": {
+   "text": "glzuc0",
+   "v": "3e2f92c1"
+  },
+  "pose-5-5": {
+   "text": "1a5jbdp",
+   "v": "0c01a891"
+  },
+  "pose-6-1": {
+   "text": "1r231lb",
+   "v": "e3fa269c"
+  },
+  "pose-6-2": {
+   "text": "1y3djdy",
+   "v": "7c999224"
+  },
+  "pose-6-3": {
+   "text": "1pvc6x8",
+   "v": "10544afe"
+  },
+  "pose-6-4": {
+   "text": "15570vs",
+   "v": "6bedfdf0"
+  },
+  "pose-6-5": {
+   "text": "1yfsvf6",
+   "v": "6f45f4bf"
+  },
+  "pose-7-1": {
+   "text": "1szpz0p",
+   "v": "2a91f6f7"
+  },
+  "pose-7-2": {
+   "text": "10o34u1",
+   "v": "2441dbc0"
+  },
+  "pose-7-3": {
+   "text": "1vqitio",
+   "v": "c55e6baf"
+  },
+  "pose-7-4": {
+   "text": "rtg59i",
+   "v": "232666b9"
+  },
+  "pose-7-5": {
+   "text": "vhfuz9",
+   "v": "19b9c6ab"
+  },
+  "pose-8-1": {
+   "text": "1d5f7fe",
+   "v": "049925f6"
+  },
+  "pose-8-2": {
+   "text": "1it252c",
+   "v": "70afc443"
+  },
+  "pose-8-3": {
+   "text": "1t7hpft",
+   "v": "0c8c4de7"
+  },
+  "pose-8-4": {
+   "text": "1hpcdd9",
+   "v": "1a5d31e7"
+  },
+  "pose-8-5": {
+   "text": "1siwvw",
+   "v": "dfb170a6"
+  },
+  "combos-1": {
+   "text": "5ypmwt",
+   "v": "821f3aed"
+  },
+  "combos-2": {
+   "text": "1tu21gz",
+   "v": "3ffcfa7e"
+  },
+  "combos-3": {
+   "text": "1w75c8o",
+   "v": "dd9f18ca"
+  },
+  "combos-4": {
+   "text": "164zz8k",
+   "v": "517a064b"
+  },
+  "combos-5": {
+   "text": "rarqa",
+   "v": "4285e0d8"
+  },
+  "universales-1": {
+   "text": "syqfvc",
+   "v": "f09601a2"
+  },
+  "universales-2": {
+   "text": "1h4r2cx",
+   "v": "5421a7ea"
+  },
+  "universales-3": {
+   "text": "12dlbbt",
+   "v": "d2d5fe6e"
+  },
+  "universales-4": {
+   "text": "1bue8wp",
+   "v": "e636c787"
+  },
+  "universales-5": {
+   "text": "11i8ndj",
+   "v": "77bcb46f"
+  },
+  "universales-6": {
+   "text": "16orl31",
+   "v": "7cab9abe"
+  },
+  "universales-7": {
+   "text": "1uib2q4",
+   "v": "807836f4"
+  },
+  "drill-voz-1": {
+   "text": "me48yd",
+   "v": "baa19772"
+  },
+  "drill-voz-2": {
+   "text": "ss3shz",
+   "v": "db14a1e8"
+  },
+  "drill-voz-3": {
+   "text": "7heq6z",
+   "v": "24b5e6d0"
+  },
+  "drill-voz-4": {
+   "text": "1pw5eho",
+   "v": "90e48e22"
+  },
+  "drill-sonidos-1": {
+   "text": "yklblr",
+   "v": "615dcddd"
+  },
+  "drill-sonidos-2": {
+   "text": "ykl8e9",
+   "v": "78329c70"
+  },
+  "drill-sonidos-3": {
+   "text": "3778y8",
+   "v": "88946b73"
+  },
+  "drill-sonidos-4": {
+   "text": "3778le",
+   "v": "061b64e4"
+  },
+  "drill-sonidos-5": {
+   "text": "ykudi7",
+   "v": "f298d1d3"
+  },
+  "drill-sonidos-6": {
+   "text": "4mc8es",
+   "v": "7465a1a2"
+  },
+  "drill-sonidos-7": {
+   "text": "4jd02m",
+   "v": "6d43e054"
+  },
+  "drill-sonidos-8": {
+   "text": "47aheg",
+   "v": "fc4efa36"
+  },
   "drill-sonidos-9": {
    "text": "4k00xj",
-   "v": "5357b50f"
+   "v": "e7736928"
   },
   "drill-sonidos-10": {
    "text": "yks82l",
-   "v": "17ee826d"
+   "v": "4b0d9ce8"
   },
   "drill-sonidos-11": {
    "text": "4k2ipv",
-   "v": "53a31071"
+   "v": "a2c05b7a"
   },
   "drill-sonidos-12": {
    "text": "ykrhay",
-   "v": "e5907178"
+   "v": "8d55148b",
+   "override": {
+    "text": "Sink!"
+   }
   },
   "drill-sonidos-13": {
    "text": "1m30tgk",
-   "v": "a0bbc5e7"
+   "v": "90606921"
   },
   "drill-respuesta-1": {
    "text": "nb2qd9",
-   "v": "0ebceb33"
+   "v": "a05758bd"
   },
   "drill-respuesta-2": {
    "text": "czi9kc",
-   "v": "7089ffdc"
+   "v": "843b2fcf"
   },
   "drill-respuesta-3": {
    "text": "1akrvqx",
-   "v": "c961af9c"
+   "v": "a7d79fc5"
   },
   "drill-respuesta-4": {
    "text": "v5lhvo",
-   "v": "affac328"
+   "v": "5128541a"
   },
   "drill-respuesta-5": {
    "text": "1o9loh3",
-   "v": "fcaa3bb3"
+   "v": "5f57b25f"
   },
   "drill-respuesta-6": {
    "text": "1kyb6js",
-   "v": "75b4e456"
+   "v": "f62d919b"
   },
   "drill-respuesta-7": {
    "text": "o6mzeh",
-   "v": "db986041"
+   "v": "00571247"
   },
   "final-1": {
    "text": "a6bfgu",
-   "v": "de5d13af"
+   "v": "a83484c8"
   },
   "final-2": {
    "text": "1iregwu",
-   "v": "7e6e70da"
+   "v": "0bcd76e8"
   }
  }
 }

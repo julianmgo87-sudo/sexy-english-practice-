@@ -25,7 +25,8 @@ Si agregas o cambias variables de entorno después, vuelve a desplegar (**Deploy
 ## La voz de ejemplo
 
 Cada frase trae su audio de ejemplo ya grabado en `public/audio/` con una **voz femenina
-neuronal, natural y cálida** (Kokoro, voz `af_bella`, un poco más lenta de lo normal). No
+neuronal, natural y sensual** (Kokoro, mezcla de las voces `af_bella` y `af_nicole`, un
+poco más lenta de lo normal). No
 depende del celular, no necesita ninguna clave y no cuesta nada. El botón **Lento** la
 reproduce al 75 % sin cambiar el tono.
 
@@ -41,8 +42,9 @@ cd -
 .venv-audio/bin/python scripts/generate-audio.py --models ~/kokoro
 ```
 
-Para otra voz: `--voice af_nicole` (susurrada), `af_heart`, `af_sky`... o una mezcla
-`--voice "af_bella:60,af_nicole:40"`; y `--speed 0.85` para más lenta. Requiere Node 22+ y ffmpeg.
+Para otra voz: `--voice af_bella` (cálida), `af_nicole` (susurrada), `af_heart`, `af_sky`...
+o una mezcla con pesos como la actual `--voice "af_bella:60,af_nicole:40"`; y `--speed 0.85`
+para más lenta. Requiere Node 22+ y ffmpeg.
 Kokoro es de código abierto (Apache 2.0), apto para uso comercial.
 
 Si una frase no tiene audio grabado (p. ej. la agregaste y aún no regeneraste), la app usa la
